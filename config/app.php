@@ -200,8 +200,6 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
 
         'Accordion' => 'Bootstrapper\Facades\Accordion',
         'Alert' => 'Bootstrapper\Facades\Alert',
@@ -227,6 +225,8 @@ return [
         'Tabbable' => 'Bootstrapper\Facades\Tabbable',
         'Table' => 'Bootstrapper\Facades\Table',
         'Thumbnail' => 'Bootstrapper\Facades\Thumbnail',
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
 
     ],
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Post;
 
 class PostsController extends Controller
 {
@@ -26,7 +27,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-
+        return view('forms.create-post');
     }
 
     /**
@@ -37,7 +38,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

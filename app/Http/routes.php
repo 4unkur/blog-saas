@@ -11,4 +11,4 @@
 |
 */
 
-Route::resource('/', 'PostsController@index');
+Route::resource('posts', 'PostsController');
