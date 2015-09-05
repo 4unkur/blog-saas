@@ -17,7 +17,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        $posts = Post::all();
+        return view('posts.all')->with('posts', $posts);
     }
 
     /**
@@ -27,7 +28,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('forms.create-post');
+        return view('posts.create');
     }
 
     /**
@@ -56,7 +57,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findBySlug($id);
+        return view('posts.show')->with('post', $post);
     }
 
     /**
