@@ -11,7 +11,4 @@
 |
 */
 
-Route::get('/', [
-    'as' => 'home',
-    'uses' => 'HomeController@index',
-]);
+Route::resource('/', 'PostsController@index');
