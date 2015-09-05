@@ -6,12 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Post extends Model
+class Post extends Model implements SluggableInterface
 {
 	use SluggableTrait;
 	protected $sluggable = [
 		'build_from' => 'title',
-		'save_to'    => 'slug',
+		'save_to' => 'slug',
+	];
+
+	protected $fillable = [
+		'title',
+		'body',
 	];
 
 	private $rules = [

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Post;
+use App\Post;
 
 class PostsController extends Controller
 {
@@ -38,7 +38,14 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $post = new Post([
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+            'slug' => $request->get('title'),
+        ]);
 
+        $post->save();
+        return \Redirect::route('posts.create')->with('message', 'Post added!'); //should be changed on view page of created post
     }
 
     /**

@@ -24,7 +24,8 @@ class PostFormRequest extends Request
     public function rules()
     {
         return [
-            //
+            'title' => 'required',
+            'body' => 'required',
         ];
     }
 }
