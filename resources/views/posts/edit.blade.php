@@ -13,11 +13,15 @@
 
     <div class="form-group">
         {!! Form::label('body', 'Body') !!}
-        {!! Form::textarea('body', null, ['required', 'class' => 'form-control', 'placeholder' => 'Input your text']) !!}
+        {!! Form::textarea('body', null, ['required', 'class' => 'form-control', 'placeholder' => 'Input your text', 'id' => 'body']) !!}
+        <script>
+            CKEDITOR.replace('body');
+        </script>
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
+        <a href="{{ URL::route('posts.show', $post->slug) }}" class="btn btn-default">Cancel</a>
     </div>
     {!! Form::close() !!}
 @endsection

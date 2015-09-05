@@ -101,6 +101,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+
+        return \Redirect::route('posts.index')->with('message', 'Post is deleted');
     }
 }

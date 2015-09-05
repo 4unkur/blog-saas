@@ -13,7 +13,10 @@
 
     <div class="form-group">
         {!! Form::label('body', 'Body') !!}
-        {!! Form::textarea('body', null, ['required', 'class' => 'form-control', 'placeholder' => 'Input your text']) !!}
+        {!! Form::textarea('body', null, ['placeholder' => 'Input your text', 'class' => 'form-control', 'required', 'id' => 'body']) !!}
+        <script>
+            CKEDITOR.replace('body');
+        </script>
     </div>
 
     <div class="form-group">
