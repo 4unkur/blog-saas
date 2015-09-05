@@ -3,9 +3,9 @@
 @section('content')
     <h1>Add Post</h1>
 
-@include('errors.all')
+    @include('errors.all')
 
-    {!! Form::open(['route' => 'posts.store', 'class' => 'form']) !!}
+    {!! Form::open(['route' => 'store', 'class' => 'form']) !!}
     <div class="form-group">
         {!! Form::label('title', 'Title') !!}
         {!! Form::text('title', null, ['required', 'class' => 'form-control', 'placeholder' => 'Input title']) !!}

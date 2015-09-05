@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostFormRequest;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Auth;
+use App;
 
 class PostsController extends Controller
 {
@@ -17,7 +20,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(10);
         return view('posts.all')->with('posts', $posts);
     }
 
@@ -28,6 +31,9 @@ class PostsController extends Controller
      */
     public function create()
     {
+        if (Auth::guest()) {
+            App::abort(403, 'Access denied');
+        }
         return view('posts.create');
     }
 
@@ -37,8 +43,11 @@ class PostsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(PostFormRequest $request)
     {
+        if (Auth::guest()) {
+            App::abort(403, 'Access denied');
+        }
         $post = new Post([
             'title' => $request->get('title'),
             'body' => $request->get('body'),
@@ -46,7 +55,7 @@ class PostsController extends Controller
         ]);
 
         $post->save();
-        return \Redirect::route('posts.show', $post->slug)->with('message', 'Post added!'); //add messages' displaying!
+        return \Redirect::route('show', $post->slug)->with('message', 'Post added!'); //add messages' displaying!
     }
 
     /**
@@ -69,6 +78,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::guest()) {
+            App::abort(403, 'Access denied');
+        }
         $post = Post::findBySlugOrId($id);
 
         return view('posts.edit')->with('post', $post);
@@ -81,8 +93,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(PostFormRequest $request, $id)
     {
+        if (Auth::guest()) {
+            App::abort(403, 'Access denied');
+        }
         $post = Post::findBySlugOrId($id);
 
         $post->update([
@@ -90,7 +105,7 @@ class PostsController extends Controller
             'body' => $request->get('body'),
         ]);
 
-        return \Redirect::route('posts.show', $post->slug)->with('message', 'Post updated!'); //add messages' displaying!
+        return \Redirect::route('show', $post->slug)->with('message', 'Post updated!'); //add messages' displaying!
     }
 
     /**
@@ -101,8 +116,11 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::guest()) {
+            App::abort(403, 'Access denied');
+        }
         Post::destroy($id);
 
-        return \Redirect::route('posts.index')->with('message', 'Post is deleted');
+        return \Redirect::route('index')->with('message', 'Post is deleted');
     }
 }

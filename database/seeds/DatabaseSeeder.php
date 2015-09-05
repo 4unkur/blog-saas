@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +15,24 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-//         $this->call(UserTableSeeder::class);
+         $this->call(PostsTableSeeder::class);
 
         Model::reguard();
+    }
+}
+
+class PostsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        $faker = Faker\Factory::create();
+        Post::truncate();
+
+        foreach (range(1,500) as $index) {
+            Post::create([
+                'title' => $faker->unique->sentence(1),
+                'body' => $faker->text(1000),
+            ]);
+        }
     }
 }

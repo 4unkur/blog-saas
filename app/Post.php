@@ -19,10 +19,4 @@ class Post extends Model implements SluggableInterface
 		'body',
 	];
 
-	private $rules = [
-		'title' => 'required',
-		'body' => 'required',
-	];
-
-
 }

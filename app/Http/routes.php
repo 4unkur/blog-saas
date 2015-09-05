@@ -10,5 +10,27 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
 
-Route::resource('posts', 'PostsController');
+Route::get('/admin', [
+    'as' => 'admin',
+    'uses' => 'Auth\AuthController@getLogin'
+]);
+Route::post('/admin', [
+    'as' => 'admin',
+    'uses' => 'Auth\AuthController@postLogin'
+]);
+
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::get('/logout', [
+    'as' => 'logout',
+    'uses' => 'Auth\AuthController@getLogout',
+]);
+
+Route::resource('/', 'PostsController');
+Route::get('/{id}', 'PostsController@show');
+Route::get('/{id}/edit', 'PostsController@edit');
+Route::put('/{id}', 'PostsController@update');
+Route::delete('/{id}', 'PostsController@destroy');
