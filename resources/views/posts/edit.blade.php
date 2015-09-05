@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1>Add Post</h1>
+    <h1>Edit Post</h1>
 
-@include('errors.all')
+    @include('errors.all')
 
-    {!! Form::open(['route' => 'posts.store', 'class' => 'form']) !!}
+    {!! Form::model($post, ['method' => 'put', 'route' => ['posts.update', $post->id], 'class' => 'form']) !!}
     <div class="form-group">
         {!! Form::label('title', 'Title') !!}
         {!! Form::text('title', null, ['required', 'class' => 'form-control', 'placeholder' => 'Input title']) !!}
@@ -17,7 +17,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 @endsection

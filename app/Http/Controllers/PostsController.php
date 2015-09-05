@@ -46,7 +46,7 @@ class PostsController extends Controller
         ]);
 
         $post->save();
-        return \Redirect::route('posts.create')->with('message', 'Post added!'); //should be changed on view page of created post
+        return \Redirect::route('posts.show', $post->slug)->with('message', 'Post added!'); //add messages' displaying!
     }
 
     /**
@@ -69,7 +69,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findBySlugOrId($id);
+
+        return view('posts.edit')->with('post', $post);
     }
 
     /**
@@ -81,7 +83,14 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findBySlugOrId($id);
+
+        $post->update([
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+        ]);
+
+        return \Redirect::route('posts.show', $post->slug)->with('message', 'Post updated!'); //add messages' displaying!
     }
 
     /**
