@@ -5,7 +5,7 @@
 
     @include('errors.all')
 
-    {!! Form::model($post, ['method' => 'put', 'route' => ['update', $post->slug], 'class' => 'form']) !!}
+    {!! Form::model($post, ['method' => 'put', 'route' => ['posts.update', $post->slug], 'class' => 'form']) !!}
     <div class="form-group">
         {!! Form::label('title', 'Title') !!}
         {!! Form::text('title', null, ['required', 'class' => 'form-control', 'placeholder' => 'Input title']) !!}
@@ -21,7 +21,7 @@
 
     <div class="form-group">
         {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
-        <a href="{{ URL::route('show', $post->slug) }}" class="btn btn-default">Cancel</a>
+        <a href="{{ URL::route('posts.show', $post->slug) }}" class="btn btn-default">Cancel</a>
     </div>
     {!! Form::close() !!}
 @endsection

@@ -11,7 +11,8 @@
         "laravelcollective/html": "5.1.*",
         "patricktalmadge/bootstrapper": "~5",
         "cviebrock/eloquent-sluggable": "^3.0",
-        "fzaninotto/faker": "^1.5"
+        "fzaninotto/faker": "^1.5",
+        "deployer/deployer": "~3.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

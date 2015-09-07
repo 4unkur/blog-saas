@@ -9,9 +9,9 @@
         {!! $post->body !!}
     </p>
     @if (Auth::check())
-    {!! Form::open(['route' => ['destroy', $post->id], 'method' => 'delete']) !!}
+    {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
     <div class="form-group">
-        <a href="{{ URL::route('edit', $post->slug) }}" class="btn btn-warning">Edit Post</a>
+        <a href="{{ URL::route('posts.edit', $post->slug) }}" class="btn btn-warning">Edit Post</a>
         <button type="submit" class="btn btn-danger">Delete post</button>
     </div>
     {!! Form::close() !!}

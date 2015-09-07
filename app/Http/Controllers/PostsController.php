@@ -55,7 +55,7 @@ class PostsController extends Controller
         ]);
 
         $post->save();
-        return \Redirect::route('show', $post->slug)->with('message', 'Post added!'); //add messages' displaying!
+        return \Redirect::route('posts.show', $post->slug)->with('message', 'Post added!'); //add messages' displaying!
     }
 
     /**
@@ -67,6 +67,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::findBySlug($id);
+
         return view('posts.show')->with('post', $post);
     }
 
@@ -105,7 +106,7 @@ class PostsController extends Controller
             'body' => $request->get('body'),
         ]);
 
-        return \Redirect::route('show', $post->slug)->with('message', 'Post updated!'); //add messages' displaying!
+        return \Redirect::route('posts.show', $post->slug)->with('message', 'Post updated!'); //add messages' displaying!
     }
 
     /**
@@ -121,6 +122,6 @@ class PostsController extends Controller
         }
         Post::destroy($id);
 
-        return \Redirect::route('index')->with('message', 'Post is deleted');
+        return \Redirect::route('posts.index')->with('message', 'Post is deleted');
     }
 }

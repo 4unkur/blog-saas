@@ -5,7 +5,7 @@
 
     @include('errors.all')
 
-    {!! Form::open(['route' => 'store', 'class' => 'form']) !!}
+    {!! Form::open(['route' => 'posts.store', 'class' => 'form']) !!}
     <div class="form-group">
         {!! Form::label('title', 'Title') !!}
         {!! Form::text('title', null, ['required', 'class' => 'form-control', 'placeholder' => 'Input title']) !!}
