@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', 'PostsController@index');
+Route::get('/', [
+	'as' => 'home',
+	'uses' => 'PostsController@index'
+]);
 Route::resource('posts', 'PostsController');
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');

@@ -12,7 +12,7 @@
     {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
     <div class="form-group">
         <a href="{{ URL::route('posts.edit', $post->slug) }}" class="btn btn-warning">Edit Post</a>
-        <button type="submit" class="btn btn-danger">Delete post</button>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this post?')">Delete post</button>
     </div>
     {!! Form::close() !!}
     @endif

@@ -1,5 +1,6 @@
-<div class="container">
 @include('partials.header')
+
+<div class="container">
 @yield('content')
     @if(Session::has('message'))
         <div class="alert alert-info">
