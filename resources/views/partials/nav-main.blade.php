@@ -4,7 +4,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
                 <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-            <a href="{{ URL::route('home') }}" class="navbar-brand">Bloguma</a>
+            <a href="{{ URL::route('home') }}" class="navbar-brand">Blogum</a>
         </div>
         <div class="collapse navbar-collapse" id="main-nav">
             <ul class="nav navbar-nav">
