@@ -17,6 +17,11 @@ Route::get('/', [
 ]);
 Route::resource('posts', 'PostsController');
 
+Route::get('drafts', [
+    'as' => 'drafts',
+    'uses' => 'PostsController@drafts',
+]);
+
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 

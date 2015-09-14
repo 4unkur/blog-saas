@@ -20,7 +20,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::where('draft', '=', 0)->paginate(10);
+
         return view('posts.all')->with('posts', $posts);
     }
 
@@ -34,6 +35,7 @@ class PostsController extends Controller
         if (Auth::guest()) {
             App::abort(403, 'Access denied');
         }
+
         return view('posts.create');
     }
 
@@ -48,10 +50,12 @@ class PostsController extends Controller
         if (Auth::guest()) {
             App::abort(403, 'Access denied');
         }
+        $isDraft = (bool)$request->get('save');
         $post = new Post([
             'title' => $request->get('title'),
             'body' => $request->get('body'),
             'slug' => $request->get('title'),
+            'draft' => $isDraft,
         ]);
 
         $post->save();
@@ -123,5 +127,12 @@ class PostsController extends Controller
         Post::destroy($id);
 
         return \Redirect::route('posts.index')->with('message', 'Post is deleted');
+    }
+
+    public function drafts()
+    {
+        $drafts = Post::where('draft', '=', 1)->paginate(10);
+
+        return view('posts.all')->with('posts', $drafts);
     }
 }

@@ -21,6 +21,7 @@
 
     <div class="form-group">
         {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Save as draft', ['class' => 'btn btn-default', 'name' => 'save']) !!}
     </div>
     {!! Form::close() !!}
 @endsection

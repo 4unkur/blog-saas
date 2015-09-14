@@ -17,6 +17,7 @@ class Post extends Model implements SluggableInterface
 	protected $fillable = [
 		'title',
 		'body',
+		'draft',
 	];
 
 }

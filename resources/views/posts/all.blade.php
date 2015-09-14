@@ -14,6 +14,7 @@
         </div>
         <div class="col-md-3">
             <a class="btn btn-xs btn-success" href="{{ URL::action('PostsController@create') }}">Add Post</a>
+            <a class="btn btn-xs btn-default" href="{{ URL::route('drafts') }}">Drafts</a>
         </div>
     </div>
 @stop
