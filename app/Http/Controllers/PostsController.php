@@ -70,6 +70,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
+        if (Auth::guest()) {
+            App::abort(403, 'Access denied');
+        }
         $post = Post::findBySlug($id);
 
         return view('posts.show')->with('post', $post);
@@ -104,10 +107,12 @@ class PostsController extends Controller
             App::abort(403, 'Access denied');
         }
         $post = Post::findBySlugOrId($id);
+        $isDraft = (bool)$request->get('draft');
 
         $post->update([
             'title' => $request->get('title'),
             'body' => $request->get('body'),
+            'draft' => $isDraft ? 1 : 0,
         ]);
 
         return \Redirect::route('posts.show', $post->slug)->with('message', 'Post updated!'); //add messages' displaying!
@@ -131,6 +136,9 @@ class PostsController extends Controller
 
     public function drafts()
     {
+        if (Auth::guest()) {
+            App::abort(403, 'Access denied');
+        }
         $drafts = Post::where('draft', '=', 1)->paginate(10);
 
         return view('posts.all')->with('posts', $drafts);

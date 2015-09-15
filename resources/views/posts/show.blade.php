@@ -1,7 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1>{{ $post->title }}</h1>
+    <h1>
+        {{ $post->title }}
+        @if ($post->draft) <span class="badge badge-lg">Draft</span>@endif
+    </h1>
     <p>Published on:
         {{ $post->created_at->format('F d, Y \a\t H:i:s') }}
     </p>

@@ -20,8 +20,13 @@
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
-        <a href="{{ URL::route('posts.show', $post->slug) }}" class="btn btn-default">Cancel</a>
+        @if ($post->draft)
+            {!! Form::submit('Publish', ['class' => 'btn btn-success']) !!}
+            {!! Form::submit('Save Draft', ['class' => 'btn btn-info', 'name' => 'draft', 'value' => 1]) !!}
+        @else
+            {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
+        @endif
+            <a href="{{ URL::route('posts.show', $post->slug) }}" class="btn btn-default">Cancel</a>
     </div>
     {!! Form::close() !!}
 @endsection
