@@ -20,7 +20,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('draft', '=', 0)->paginate(10);
+        $posts = Post::where('draft', '=', 0)->paginate(config('blog.posts_per_page'));
 
         return view('posts.all')->with('posts', $posts);
     }
@@ -139,7 +139,7 @@ class PostsController extends Controller
         if (Auth::guest()) {
             App::abort(403, 'Access denied');
         }
-        $drafts = Post::where('draft', '=', 1)->paginate(10);
+        $drafts = Post::where('draft', '=', 1)->paginate(config('blog.posts_per_page'));
 
         return view('posts.all')->with('posts', $drafts);
     }

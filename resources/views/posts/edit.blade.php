@@ -26,7 +26,7 @@
         @else
             {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
         @endif
-            <a href="{{ URL::route('posts.show', $post->slug) }}" class="btn btn-default">Cancel</a>
+            <button class="btn btn-default" onclick="history.go(-1)">Cancel</button>
     </div>
     {!! Form::close() !!}
 @endsection
