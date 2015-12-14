@@ -22,7 +22,7 @@
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = '4unkur';
+        var disqus_shortname = 'PUTYOURUSERNAMEHERE';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
